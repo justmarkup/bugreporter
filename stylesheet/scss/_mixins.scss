@@ -1,0 +1,113 @@
+$useIEFilters: 1;
+
+@mixin color ($color, $opacity) {
+  color: $color;
+	color: rgba($color, $opacity);
+}
+
+@mixin bg-color ($color, $opacity) {
+  background-color: $color;
+	background-color: rgba($color, $opacity);
+}
+
+@mixin font-size ($size, $space: 0) {
+  font-size: $size + px;
+	font-size: $size/10 + rem;
+  @if $space == 1 {
+    margin: 0;
+    padding: $size/24 + em 0 0 0;
+  }
+}
+
+@mixin border-image ($path, $offsets, $repeats) {
+  -moz-border-image: $path $offsets $repeats;
+  -o-border-image: $path $offsets $repeats;
+  -webkit-border-image: $path $offsets $repeats;
+  border-image: $path $offsets $repeats;
+}
+
+@mixin border-radius ($values) {
+  -moz-border-radius: $values;
+  -webkit-border-radius: $values;
+  border-radius: $values;
+}
+
+@mixin box-column ($count, $gap) {
+  -webkit-column-count: $count;
+  -webkit-column-gap: $gap;
+  -moz-column-count: $count;
+  -moz-column-gap: $gap;
+  column-count: $count;
+  column-gap: $gap;
+}
+
+@mixin box-shadow ($x, $y, $offset, $du, $hex, $ie: $useIEFilters) {
+  -moz-box-shadow: $x $y $offset $du $hex;
+  -webkit-box-shadow: $x $y $offset $du $hex;
+  box-shadow: $x $y $offset $du $hex;
+  
+  @if $ie == 1 {
+    $iecolor: '#' + red($hex) + green($hex) + blue($hex);
+    filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=#{$x}, OffY=#{$y}, Color='#{$iecolor}');
+    -ms-filter: quote(progid:DXImageTransform.Microsoft.dropshadow(OffX=#{$x}, OffY=#{$y}, Color='#{$iecolor}'));
+  }
+}
+
+@mixin linear-gradient($from, $to, $ie: $useIEFilters) {
+  @if $ie != 1 {
+    background-color: $to;
+  }
+  
+  background-image: -moz-linear-gradient($from, $to);
+  background-image: -o-linear-gradient($from, $to);
+  background-image: -ms-linear-gradient($from, $to);
+  background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, $from),color-stop(1, $to));
+  background-image: -webkit-linear-gradient($from, $to);
+
+  @if $ie == 1 { 
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$from}', endColorstr='#{$to}');
+    -ms-filter: quote(progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$from}', endColorstr='#{$to}'));
+  }
+}
+
+@mixin rgba($hex, $alpha, $ie: $useIEFilters) {     
+  @if $ie == 1 { 
+    // this formula is not accurate enough, will be fixed with sass 3.1
+    background-color: $hex;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$hex}',EndColorStr='#{$hex}}');
+    -ms-filter: quote(progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$hex}',EndColorStr='#{$hex}'));
+    background-color: rgba(red($hex), green($hex), blue($hex), $alpha);
+  }
+  @else {
+    background-color: $hex;
+    background-color: rgba(red($hex), green($hex), blue($hex), $alpha);
+  }
+}
+
+@mixin rotate ($deg) {
+  -moz-transform: rotate(#{$deg}deg);
+  -o-transform: rotate(#{$deg}deg);
+  -ms-transform: rotate(#{$deg}deg);
+  -webkit-transform: rotate(#{$deg}deg);
+}
+
+@mixin scale ($size) {
+	-moz-transform: scale(#{$size});
+	-o-transform: scale(#{$size});
+	-ms-transform: scale(#{$size});
+	-webkit-transform: scale(#{$size});
+}
+
+@mixin transition ($value) {
+  -moz-transition: $value;
+  -o-transition: $value;
+  -ms-transition: $value;
+  -webkit-transition: $value;
+  transition: $value;
+}
+
+@mixin border-box() {
+  -moz-box-sizing: border-box; 
+  -webkit-box-sizing: border-box; 
+  box-sizing: border-box;
+}
