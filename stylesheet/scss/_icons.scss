@@ -27,7 +27,7 @@ Instead of a list of all class selectors,
 you can use the generic selector below, but it's slower:
 [class*="icon-"] {
 */
-.icon-bug, .icon-opera, .icon-firefox, .icon-safari, .icon-IE, .icon-chrome, .icon-earth, .icon-android, .icon-windows, .icon-windows8, .icon-apple, .icon-palette, .icon-flash, .icon-screenshot, .icon-screen {
+.icon-bug, .icon-opera, .icon-firefox, .icon-safari, .icon-IE, .icon-chrome, .icon-earth, .icon-android, .icon-windows, .icon-windows8, .icon-apple, .icon-palette, .icon-flash, .icon-screenshot, .icon-screen, .icon-browser {
 	font-family: 'icomoon';
 	speak: none;
 	font-style: normal;
@@ -81,4 +81,7 @@ you can use the generic selector below, but it's slower:
 }
 .icon-screen:before {
 	content: "\e00b";
+}
+.icon-browser:before {
+	content: "\e00c";
 }
