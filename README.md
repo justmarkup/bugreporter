@@ -4,6 +4,20 @@ Bugreporter
 * Author    : justmarkup hallo@justmarkup.com
 * Demo      : http://bugspencer.com/bugreport
 
+What does it detect?
+------------
+
+* OS (Version)
+* Browser (Version)
+* Browserengine
+* Browser Dimension
+* Device Dimension
+* Color Depth
+* Flash (Version)
+* Cookie (yes or no)
+* Adblock (yes or no)
+* Zoomlevel
+
 License
 ------------
 
