@@ -71,6 +71,7 @@ a:hover {text-decoration: underline;}
 		left: 0;
 		top: 0;
 		padding: 0.3em;
+		background: #fff;
 		background: rgba($white, 0.2);
 	}
 	li {
@@ -78,6 +79,7 @@ a:hover {text-decoration: underline;}
 		list-style: none;
 		margin: 1em 2% 0 0;
 		padding: 3em 2em 2em 2em;
+		background: $grey;
 		background: rgba(lighten($grey, 30), 0.2);
 		border: 1px solid $l-green;
 		text-align: center;
