@@ -24,8 +24,8 @@
 	}
 
 	function gimme() {
-			wrapper.innerHTML = logs;
-			logs = '';
+		wrapper.innerHTML = logs;
+		logs = '';
 	}
 
 	function getFlashVersion() {
@@ -37,14 +37,15 @@
 			} catch(e) {}
 			return new ActiveXObject('ShockwaveFlash.ShockwaveFlash').GetVariable('$version').replace(/\D+/g, ',').match(/^,?(.+),?$/)[1];
 
-			} catch(e) {
+		} catch(e) {
 			try {
 					if(navigator.mimeTypes["application/x-shockwave-flash"].enabledPlugin){
 					return (navigator.plugins["Shockwave Flash 2.0"] || navigator.plugins["Shockwave Flash"]).description.replace(/\D+/g, ",").match(/^,?(.+),?$/)[1];
   				}		
 			} catch(e) {}
-			}
-			return '0';
+		}
+		
+		return '0';
 	}
 
 	function localStorageEnabeled() {
@@ -79,6 +80,7 @@
 		log('<h2>Flash</h2> Version:' + hash[8], 'flash');
 		log('<h2>Cookies</h2> ' + hash[9]);
 		log('<h2>Adblock</h2> ' + hash[10]);
+		log('<h2>Zoomlevel</h2> ' + hash[11]);
 	} else {
 		log('<h2>OS</h2> ' + uaDetails.os.name + ' (' + uaDetails.os.version + ')');
 		log('<h2>Browser</h2> ' + uaDetails.browser.name + ' ' + uaDetails.browser.major + ' (' + uaDetails.browser.version + ')', 'earth');
@@ -93,8 +95,8 @@
 		}
 		log('<h2>Cookies</h2> ' + cookiesEnabled());
 		log('<h2>Adblock</h2> ' + adblock);
-		doc.location.hash = ':' + uaDetails.os.name + ' (' + uaDetails.os.version + ')' + ':' + uaDetails.browser.name + ':' + uaDetails.browser.major + ' (' + uaDetails.browser.version + ')' + ':' + uaDetails.engine.name + ':' + docW + ' x ' + docH + ':' + w + ' x ' + h + ':' + color + ':' + getFlashVersion().split(',').shift() + ':' + cookiesEnabled() + ':' + adblock;
-		//url.innerHTML = '<p class="url">' + doc.location.href + '</p>';
+		log('<h2>Zoomlevel</h2> ' + detectZoom.zoom());
+		doc.location.hash = ':' + uaDetails.os.name + ' (' + uaDetails.os.version + ')' + ':' + uaDetails.browser.name + ':' + uaDetails.browser.major + ' (' + uaDetails.browser.version + ')' + ':' + uaDetails.engine.name + ':' + docW + ' x ' + docH + ':' + w + ' x ' + h + ':' + color + ':' + getFlashVersion().split(',').shift() + ':' + cookiesEnabled() + ':' + adblock + ':' + detectZoom.zoom();
 	}
 
 	gimme();
