@@ -2,7 +2,7 @@ Bugreporter
 ================================
 
 * Author    : justmarkup hallo@justmarkup.com
-* Demo      : http://bugspencer.com/bugreport
+* Demo      : http://bugspencer.com/bugreporter
 
 What does it detect?
 ------------
