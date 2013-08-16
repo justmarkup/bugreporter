@@ -1,1 +1,1 @@
-adblock = false;
+adblock = 'not enabled';

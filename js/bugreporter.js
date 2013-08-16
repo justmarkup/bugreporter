@@ -53,9 +53,9 @@
 		try {
         	localStorage.setItem(mod, mod);
         	localStorage.removeItem(mod);
-        	return 'true';
+        	return 'available';
     	} catch(e) {
-        	return 'false';
+        	return 'not available';
     	}
 	}
 
@@ -63,7 +63,11 @@
 		document.cookie = "cookietest=1";
 		var ret = document.cookie.indexOf("cookietest=") != -1;
 		document.cookie = "cookietest=1; expires=Thu, 01-Jan-1970 00:00:01 GMT";
-		return ret;
+		if (ret) {
+			return 'available';
+		} else {
+			return 'not available';
+		}
 	}
 
 	uaParser.setUA(ua);
@@ -79,8 +83,9 @@
 		log('<h2>Color Depth</h2> ' + hash[7], 'palette');
 		log('<h2>Flash</h2> Version:' + hash[8], 'flash');
 		log('<h2>Cookies</h2> ' + hash[9]);
-		log('<h2>Adblock</h2> ' + hash[10]);
-		log('<h2>Zoomlevel</h2> ' + hash[11]);
+		log('<h2>LocalStorage</h2> ' + hash[10]);
+		log('<h2>Adblock Plugin</h2> ' + hash[11]);
+		log('<h2>Zoomlevel</h2> ' + hash[12]);
 	} else {
 		log('<h2>OS</h2> ' + uaDetails.os.name + ' (' + uaDetails.os.version + ')');
 		log('<h2>Browser</h2> ' + uaDetails.browser.name + ' ' + uaDetails.browser.major + ' (' + uaDetails.browser.version + ')', 'earth');
@@ -94,9 +99,10 @@
 			log('<h2>Flash</h2> Version:' + getFlashVersion().split(',').shift(), 'flash');
 		}
 		log('<h2>Cookies</h2> ' + cookiesEnabled());
-		log('<h2>Adblock</h2> ' + adblock);
+		log('<h2>LocalStorage</h2> ' + localStorageEnabeled());
+		log('<h2>Adblock Plugin</h2> ' + adblock);
 		log('<h2>Zoomlevel</h2> ' + detectZoom.zoom());
-		doc.location.hash = ':' + uaDetails.os.name + ' (' + uaDetails.os.version + ')' + ':' + uaDetails.browser.name + ':' + uaDetails.browser.major + ' (' + uaDetails.browser.version + ')' + ':' + uaDetails.engine.name + ':' + docW + ' x ' + docH + ':' + w + ' x ' + h + ':' + color + ':' + getFlashVersion().split(',').shift() + ':' + cookiesEnabled() + ':' + adblock + ':' + detectZoom.zoom();
+		doc.location.hash = ':' + uaDetails.os.name + ' (' + uaDetails.os.version + ')' + ':' + uaDetails.browser.name + ':' + uaDetails.browser.major + ' (' + uaDetails.browser.version + ')' + ':' + uaDetails.engine.name + ':' + docW + ' x ' + docH + ':' + w + ' x ' + h + ':' + color + ':' + getFlashVersion().split(',').shift() + ':' + cookiesEnabled() + ':' + localStorageEnabeled() + ':' + adblock + ':' + detectZoom.zoom();
 	}
 
 	gimme();
