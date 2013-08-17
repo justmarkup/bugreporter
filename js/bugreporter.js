@@ -3,7 +3,6 @@
 (function (doc, win, docEl) {
 	var uaParser = new UAParser(),
 		wrapper = doc.getElementById('details'),
-		url = doc.getElementById('url'),
 		ua = navigator.userAgent,
 		logs = '',
 		w = screen.width,
@@ -48,6 +47,10 @@
 		return '0';
 	}
 
+	function getBrowserLanguage() {
+		return (navigator.language || navigator.userLanguage) || 'default';
+	}
+
 	function localStorageEnabeled() {
 		var mod = 'localStorage';
 		try {
@@ -81,11 +84,16 @@
 		log('<h2>Browser Dimensions</h2> ' + hash[5], 'browser');
 		log('<h2>Device Dimensions</h2> ' + hash[6], 'screen');
 		log('<h2>Color Depth</h2> ' + hash[7], 'palette');
-		log('<h2>Flash</h2> Version:' + hash[8], 'flash');
+		if (hash[8] ===  '0') {
+			log('<h2>Flash</h2> not availabe', 'flash');
+		} else {
+			log('<h2>Flash</h2> Version: ' + hash[8], 'flash');
+		}
 		log('<h2>Cookies</h2> ' + hash[9]);
 		log('<h2>LocalStorage</h2> ' + hash[10]);
 		log('<h2>Adblock Plugin</h2> ' + hash[11]);
 		log('<h2>Zoomlevel</h2> ' + hash[12]);
+		log('<h2>Browser Language</h2> ' + hash[13]);
 	} else {
 		log('<h2>OS</h2> ' + uaDetails.os.name + ' (' + uaDetails.os.version + ')');
 		log('<h2>Browser</h2> ' + uaDetails.browser.name + ' ' + uaDetails.browser.major + ' (' + uaDetails.browser.version + ')', 'earth');
@@ -94,15 +102,16 @@
 		log('<h2>Device Dimensions</h2> ' + w + ' x ' + h, 'screen');
 		log('<h2>Color Depth</h2> ' + color, 'palette');
 		if (getFlashVersion() ===  '0') {
-			log('<h2>Flash</h2> false', 'flash');
+			log('<h2>Flash</h2> not availabe', 'flash');
 		} else {
-			log('<h2>Flash</h2> Version:' + getFlashVersion().split(',').shift(), 'flash');
+			log('<h2>Flash</h2> Version: ' + getFlashVersion().split(',').shift(), 'flash');
 		}
 		log('<h2>Cookies</h2> ' + cookiesEnabled());
 		log('<h2>LocalStorage</h2> ' + localStorageEnabeled());
 		log('<h2>Adblock Plugin</h2> ' + adblock);
 		log('<h2>Zoomlevel</h2> ' + detectZoom.zoom());
-		doc.location.hash = ':' + uaDetails.os.name + ' (' + uaDetails.os.version + ')' + ':' + uaDetails.browser.name + ':' + uaDetails.browser.major + ' (' + uaDetails.browser.version + ')' + ':' + uaDetails.engine.name + ':' + docW + ' x ' + docH + ':' + w + ' x ' + h + ':' + color + ':' + getFlashVersion().split(',').shift() + ':' + cookiesEnabled() + ':' + localStorageEnabeled() + ':' + adblock + ':' + detectZoom.zoom();
+		log('<h2>Browser Language</h2> ' + getBrowserLanguage());
+		doc.location.hash = ':' + uaDetails.os.name + ' (' + uaDetails.os.version + ')' + ':' + uaDetails.browser.name + ':' + uaDetails.browser.major + ' (' + uaDetails.browser.version + ')' + ':' + uaDetails.engine.name + ':' + docW + ' x ' + docH + ':' + w + ' x ' + h + ':' + color + ':' + getFlashVersion().split(',').shift() + ':' + cookiesEnabled() + ':' + localStorageEnabeled() + ':' + adblock + ':' + detectZoom.zoom() + ':' + getBrowserLanguage();
 	}
 
 	gimme();
