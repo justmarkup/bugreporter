@@ -7,34 +7,7 @@
 	<link rel="stylesheet"  href="stylesheet/css/all.css">
 	<script>
 		var adblock = 'enabled',
-			google_api_key = 'YOUR API KEY'; // Add your Api key here if you want to use the url shortener
 	</script>
-	<script>
-    function appendResults(text) {
-		var results = document.getElementById('url');
-
-	  	results.className = 'url';
-		results.innerHTML = 'URL to send: <span class="url-inner">' + text + '</span>';
-	}
-
-	function makeRequest() {
-		var request = gapi.client.urlshortener.url.insert({
-			'resource': {
-				'longUrl': document.location.href
-			}
-		});
-
-		request.execute(function(response) {
-			appendResults(response.id);
-		});
-	}
-
-	function load() {
-		gapi.client.setApiKey(google_api_key);
-		gapi.client.load('urlshortener', 'v1', makeRequest);
-	}
-    </script>
-    <script src="https://apis.google.com/js/client.js?onload=load"></script>
 </head>
 <body>	
 	<div class="header">
