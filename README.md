@@ -11,10 +11,12 @@ What does it detect?
 * Browser (Version)
 * Browserengine
 * Browser Dimension
+* Browser Language
 * Device Dimension
 * Color Depth
 * Flash (Version)
 * Cookie (yes or no)
+* LocalStorage (yes or no)
 * Adblock (yes or no)
 * Zoomlevel
 
@@ -23,7 +25,7 @@ License
 
 Dual licensed under GPLv2 & MIT
 
-Copyright © 2013 Faisalman justmarkup hallo@justmarkup.com
+Copyright © 2013 justmarkup hallo@justmarkup.com
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of 
 this software and associated documentation files (the "Software"), to deal in 
