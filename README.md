@@ -19,6 +19,7 @@ What does it detect?
 * LocalStorage (yes or no)
 * Adblock (yes or no)
 * Zoomlevel
+* Pixel Ratio
 
 License
 ------------
