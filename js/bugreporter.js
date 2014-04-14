@@ -73,6 +73,12 @@
 		}
 	}
 
+	function getPixelRatio() {
+		var dpr = win.devicePixelRatio || (win.screen.deviceXDPI / win.screen.logicalXDPI) || 1;
+
+    	return dpr;
+	}
+
 	uaParser.setUA(ua);
 	uaDetails = uaParser.getResult();
 
@@ -94,6 +100,7 @@
 		log('<h2>Adblock Plugin</h2> ' + hash[11]);
 		log('<h2>Zoomlevel</h2> ' + hash[12]);
 		log('<h2>Browser Language</h2> ' + hash[13]);
+		log('<h2>Pixel Ratio</h2> ' + hash[14]);
 	} else {
 		log('<h2>OS</h2> ' + uaDetails.os.name + ' (' + uaDetails.os.version + ')');
 		log('<h2>Browser</h2> ' + uaDetails.browser.name + ' ' + uaDetails.browser.major + ' (' + uaDetails.browser.version + ')', 'earth');
@@ -111,7 +118,8 @@
 		log('<h2>Adblock Plugin</h2> ' + adblock);
 		log('<h2>Zoomlevel</h2> ' + detectZoom.zoom());
 		log('<h2>Browser Language</h2> ' + getBrowserLanguage());
-		doc.location.hash = ':' + uaDetails.os.name + ' (' + uaDetails.os.version + ')' + ':' + uaDetails.browser.name + ':' + uaDetails.browser.major + ' (' + uaDetails.browser.version + ')' + ':' + uaDetails.engine.name + ':' + docW + ' x ' + docH + ':' + w + ' x ' + h + ':' + color + ':' + getFlashVersion().split(',').shift() + ':' + cookiesEnabled() + ':' + localStorageEnabeled() + ':' + adblock + ':' + detectZoom.zoom() + ':' + getBrowserLanguage();
+		log('<h2>Pixel Ratio</h2> ' + getPixelRatio());
+		doc.location.hash = ':' + uaDetails.os.name + ' (' + uaDetails.os.version + ')' + ':' + uaDetails.browser.name + ':' + uaDetails.browser.major + ' (' + uaDetails.browser.version + ')' + ':' + uaDetails.engine.name + ':' + docW + ' x ' + docH + ':' + w + ' x ' + h + ':' + color + ':' + getFlashVersion().split(',').shift() + ':' + cookiesEnabled() + ':' + localStorageEnabeled() + ':' + adblock + ':' + detectZoom.zoom() + ':' + getBrowserLanguage() + ':' + getPixelRatio();
 	}
 
 	gimme();
