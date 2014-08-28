@@ -12,7 +12,6 @@
 		hash = doc.location.hash,
 		email = document.getElementById('email'),
 		twitter = document.getElementById('twitter'),
-		facebook = document.getElementById('facebook'),
 		share = document.getElementById('share'),
 		log,
 		uaDetails;
@@ -98,6 +97,7 @@
 		log('<h2>Zoomlevel</h2> ' + hash[12]);
 		log('<h2>Browser Language</h2> ' + hash[13]);
 		log('<h2>Pixel Ratio</h2> ' + hash[14]);
+		log('<h2>User Agent</h2> <small>' + hash[15] + '</small>');
 	} else {
 		log('<h2>OS</h2> ' + platform.os + '');
 		log('<h2>Browser</h2> ' + platform.name + ' (' + platform.version + ')');
@@ -116,12 +116,12 @@
 		log('<h2>Zoomlevel</h2> ' + detectZoom.zoom());
 		log('<h2>Browser Language</h2> ' + getBrowserLanguage());
 		log('<h2>Pixel Ratio</h2> ' + getPixelRatio());
-		doc.location.hash = ':' + platform.os + ':' + platform.name + ':' + platform.version + ':' + platform.layout + ':' + docW + ' x ' + docH + ':' + w + ' x ' + h + ':' + color + ':' + getFlashVersion().split(',').shift() + ':' + cookiesEnabled() + ':' + localStorageEnabeled() + ':' + adblock + ':' + detectZoom.zoom() + ':' + getBrowserLanguage() + ':' + getPixelRatio();
+		log('<h2>User Agent</h2> <small>' + navigator.userAgent + '</small>');
+		doc.location.hash = ':' + platform.os + ':' + platform.name + ':' + platform.version + ':' + platform.layout + ':' + docW + ' x ' + docH + ':' + w + ' x ' + h + ':' + color + ':' + getFlashVersion().split(',').shift() + ':' + cookiesEnabled() + ':' + localStorageEnabeled() + ':' + adblock + ':' + detectZoom.zoom() + ':' + getBrowserLanguage() + ':' + getPixelRatio() + ':' + navigator.userAgent;
 	}
 	var alldetails = document.location.href.replace(/ /g,'').replace('#', '%23');
 	twitter.href = 'https://twitter.com/intent/tweet?text=My browser details:&url=' + alldetails + '&via=justmarkup';
 	email.href = 'mailto:?subject=My browser details&body=Here are my details: ' + alldetails + '&via=justmarkup';
-	facebook.href = 'https://www.facebook.com/sharer/sharer.php?u=' + alldetails + '&t=My browser details';
 	share.style.display = 'inline-block';
 	gimme();
 
