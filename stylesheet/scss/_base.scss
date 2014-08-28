@@ -4,10 +4,9 @@
 
 html {
 	font: 62.5%/1.4 $beta-font;
-	padding: $space;
-	color: $white;
+	color: $d-green;
 	overflow-x: hidden;
-	background: url(../../images/bg.png) repeat 0 0;
+	background: #fff;
 }
 
 @media	only screen and (-webkit-min-device-pixel-ratio: 1.3),
@@ -18,7 +17,22 @@ html {
 
 body {
 	position: relative;
-	padding: $space;
+}
+
+html,
+body {height: 100%;}
+
+.wrapper {
+  	min-height: 100%;
+ 	margin-bottom: -160px;
+  	&:after {
+		content: "";
+		display: block;
+ 	}
+}
+
+.footer, .wrapper:after {
+  height: 160px; 
 }
 
 .ease,
@@ -60,6 +74,34 @@ img {
 	height: auto;
 }
 
+.button {
+	background: #EE6456;
+	display: inline-block;
+	margin: 20px 2% 0 2%;
+	padding: 0.6em 1em;
+	font-size: 20px;
+	a {
+		text-decoration: none;
+		margin: 0 0 0 20px;
+		border: 1px solid rgba(#fff, 0.6);
+		padding: 4px 8px;
+		&:hover {
+			text-decoration: none;
+			border-color: #fff;
+			background: #fff;
+			color: #EE6456;
+		}
+	}
+}
+
+@media all and (max-width: 500px) {
+	.button span {display: block;}
+	.button a {
+		display: block;
+		margin: 10px 0 0 0;
+	}
+}
+
 a:hover {text-decoration: underline;}
 
 /* detailslist */
@@ -70,9 +112,9 @@ a:hover {text-decoration: underline;}
 		position: absolute;
 		left: 0;
 		top: 0;
-		padding: 0.3em;
+		padding: 0.6em 1em;
 		background: #fff;
-		background: rgba($white, 0.2);
+		background: $d-green;
 	}
 	li {
 		position: relative;
@@ -80,16 +122,15 @@ a:hover {text-decoration: underline;}
 		margin: 1em 2% 0 0;
 		padding: 3em 2em 2em 2em;
 		background: $grey;
-		background: rgba(lighten($grey, 30), 0.2);
-		border: 1px solid $l-green;
 		text-align: center;
+		color: #fff;
 	}
 	span {
 		position: absolute;
 		left: 0.3em;
 		bottom: 0.2em;
 		@include font-size(30);
-		color: rgba($d-green, 0.6);
+		color: #fff;
 	}
 }
 

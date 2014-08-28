@@ -1,8 +1,7 @@
 /*global UAParser, navigator*/
 
 (function (doc, win, docEl) {
-	var uaParser = new UAParser(),
-		wrapper = doc.getElementById('details'),
+	var wrapper = doc.getElementById('details'),
 		ua = navigator.userAgent,
 		logs = '',
 		w = screen.width,
@@ -11,15 +10,15 @@
 		docH = docEl.clientHeight,
 		color = win.screen.colorDepth,
 		hash = doc.location.hash,
+		email = document.getElementById('email'),
+		twitter = document.getElementById('twitter'),
+		facebook = document.getElementById('facebook'),
+		share = document.getElementById('share'),
 		log,
 		uaDetails;
 
-	function log(msg, icon) {
-		if (icon) {
-			logs += '<li><span aria-hidden="true" class="icon-' + icon + '"></span>' + msg + '</li>';
-		} else {
-			logs += '<li>' + msg + '</li>';
-		}
+	function log(msg) {
+		logs += '<li>' + msg + '</li>';
 	}
 
 	function gimme() {
@@ -79,21 +78,19 @@
     	return dpr;
 	}
 
-	uaParser.setUA(ua);
-	uaDetails = uaParser.getResult();
 
 	if (hash) {
 		hash = hash.replace(/%20/g, ' ').split(':');
 		log('<h2>OS</h2> ' + hash[1]);
-		log('<h2>Browser</h2> ' + hash[2] + ' ' + hash[3], 'earth');
+		log('<h2>Browser</h2> ' + hash[2] + ' ' + hash[3]);
 		log('<h2>Browserengine</h2> ' + hash[4]);
-		log('<h2>Browser Dimensions</h2> ' + hash[5], 'browser');
-		log('<h2>Device Dimensions</h2> ' + hash[6], 'screen');
-		log('<h2>Color Depth</h2> ' + hash[7], 'palette');
+		log('<h2>Browser Dimensions</h2> ' + hash[5]);
+		log('<h2>Device Dimensions</h2> ' + hash[6]);
+		log('<h2>Color Depth</h2> ' + hash[7]);
 		if (hash[8] ===  '0') {
-			log('<h2>Flash</h2> not availabe', 'flash');
+			log('<h2>Flash</h2> not availabe');
 		} else {
-			log('<h2>Flash</h2> Version: ' + hash[8], 'flash');
+			log('<h2>Flash</h2> Version: ' + hash[8]);
 		}
 		log('<h2>Cookies</h2> ' + hash[9]);
 		log('<h2>LocalStorage</h2> ' + hash[10]);
@@ -102,16 +99,16 @@
 		log('<h2>Browser Language</h2> ' + hash[13]);
 		log('<h2>Pixel Ratio</h2> ' + hash[14]);
 	} else {
-		log('<h2>OS</h2> ' + uaDetails.os.name + ' (' + uaDetails.os.version + ')');
-		log('<h2>Browser</h2> ' + uaDetails.browser.name + ' ' + uaDetails.browser.major + ' (' + uaDetails.browser.version + ')', 'earth');
-		log('<h2>Browserengine</h2> ' + uaDetails.engine.name);
-		log('<h2>Browser Dimensions</h2> ' + docW + ' x ' + docH, 'browser');
-		log('<h2>Device Dimensions</h2> ' + w + ' x ' + h, 'screen');
-		log('<h2>Color Depth</h2> ' + color, 'palette');
+		log('<h2>OS</h2> ' + platform.os + '');
+		log('<h2>Browser</h2> ' + platform.name + ' (' + platform.version + ')');
+		log('<h2>Browserengine</h2> ' + platform.layout);
+		log('<h2>Browser Dimensions</h2> ' + docW + ' x ' + docH);
+		log('<h2>Device Dimensions</h2> ' + w + ' x ' + h);
+		log('<h2>Color Depth</h2> ' + color);
 		if (getFlashVersion() ===  '0') {
-			log('<h2>Flash</h2> not availabe', 'flash');
+			log('<h2>Flash</h2> not availabe');
 		} else {
-			log('<h2>Flash</h2> Version: ' + getFlashVersion().split(',').shift(), 'flash');
+			log('<h2>Flash</h2> Version: ' + getFlashVersion().split(',').shift());
 		}
 		log('<h2>Cookies</h2> ' + cookiesEnabled());
 		log('<h2>LocalStorage</h2> ' + localStorageEnabeled());
@@ -119,9 +116,13 @@
 		log('<h2>Zoomlevel</h2> ' + detectZoom.zoom());
 		log('<h2>Browser Language</h2> ' + getBrowserLanguage());
 		log('<h2>Pixel Ratio</h2> ' + getPixelRatio());
-		doc.location.hash = ':' + uaDetails.os.name + ' (' + uaDetails.os.version + ')' + ':' + uaDetails.browser.name + ':' + uaDetails.browser.major + ' (' + uaDetails.browser.version + ')' + ':' + uaDetails.engine.name + ':' + docW + ' x ' + docH + ':' + w + ' x ' + h + ':' + color + ':' + getFlashVersion().split(',').shift() + ':' + cookiesEnabled() + ':' + localStorageEnabeled() + ':' + adblock + ':' + detectZoom.zoom() + ':' + getBrowserLanguage() + ':' + getPixelRatio();
+		doc.location.hash = ':' + platform.os + ':' + platform.name + ':' + platform.version + ':' + platform.layout + ':' + docW + ' x ' + docH + ':' + w + ' x ' + h + ':' + color + ':' + getFlashVersion().split(',').shift() + ':' + cookiesEnabled() + ':' + localStorageEnabeled() + ':' + adblock + ':' + detectZoom.zoom() + ':' + getBrowserLanguage() + ':' + getPixelRatio();
 	}
-
+	var alldetails = document.location.href.replace(/ /g,'').replace('#', '%23');
+	twitter.href = 'https://twitter.com/intent/tweet?text=My browser details:&url=' + alldetails + '&via=justmarkup';
+	email.href = 'mailto:?subject=My browser details&body=Here are my details: ' + alldetails + '&via=justmarkup';
+	facebook.href = 'https://www.facebook.com/sharer/sharer.php?u=' + alldetails + '&t=My browser details';
+	share.style.display = 'inline-block';
 	gimme();
 
 })(document, window, document.documentElement);
