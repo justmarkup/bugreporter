@@ -1,7 +1,7 @@
 h1 span {
-  padding: 0 0.4em 0 0;
+  	padding: 0 0.4em 0 0;
 	@include font-size(32);
-  color: #1CAF9A;
+  	color: $turkis;
 }
 
 h1 {padding: 20px 2% 0;}

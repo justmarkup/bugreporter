@@ -2,26 +2,26 @@ h1 {
 	font-family: $alpha-font;
 	@include font-size(22);
 	font-weight: normal;
-	border-bottom: 2px solid $d-green;
+	border-bottom: 2px solid $turkis;
 	clear: both;
 	padding: 0.2em 0;
 	margin: 0 0 0.3em 0;
 }
 
 h2 {
-  font-family: $alpha-font;
-  @include font-size(16);
-  font-weight: normal;
-  padding: 0;
-  margin: 0;
+	font-family: $alpha-font;
+	@include font-size(16);
+	font-weight: normal;
+	padding: 0;
+	margin: 0;
 }
 
 a,
 p {
 	@include font-size(16);
-  color: $white;
+	color: $white;
 }
 
 li {
-  @include font-size(18);
+	@include font-size(18);
 }
