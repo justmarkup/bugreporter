@@ -29,5 +29,18 @@
 	<script src="js/platform.js"></script>
 	<script src="js/lib/detect-zoom.min.js"></script>
 	<script src="js/bugreporter.js"></script>
+	<script>
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://justmarkup.com/piwik/" : "http://justmarkup.com/piwik/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script>
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 1);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+    </script>
+    <noscript><img src="http://justmarkup.com/piwik/piwik.php?idsite=1" style="border:0" alt="" /></noscript>
+
 </body>
 </html>
