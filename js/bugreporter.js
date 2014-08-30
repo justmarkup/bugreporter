@@ -94,10 +94,9 @@
 		log('<h2>Cookies</h2> ' + hash[9]);
 		log('<h2>LocalStorage</h2> ' + hash[10]);
 		log('<h2>Adblock Plugin</h2> ' + hash[11]);
-		log('<h2>Zoomlevel</h2> ' + hash[12]);
-		log('<h2>Browser Language</h2> ' + hash[13]);
-		log('<h2>Pixel Ratio</h2> ' + hash[14]);
-		log('<h2>User Agent</h2> <small>' + hash[15] + '</small>');
+		log('<h2>Browser Language</h2> ' + hash[12]);
+		log('<h2>Pixel Ratio</h2> ' + hash[13]);
+		log('<h2>User Agent</h2> <small>' + hash[14] + '</small>');
 	} else {
 		log('<h2>OS</h2> ' + platform.os + '');
 		log('<h2>Browser</h2> ' + platform.name + ' (' + platform.version + ')');
@@ -113,11 +112,10 @@
 		log('<h2>Cookies</h2> ' + cookiesEnabled());
 		log('<h2>LocalStorage</h2> ' + localStorageEnabeled());
 		log('<h2>Adblock Plugin</h2> ' + adblock);
-		log('<h2>Zoomlevel</h2> ' + detectZoom.zoom());
 		log('<h2>Browser Language</h2> ' + getBrowserLanguage());
 		log('<h2>Pixel Ratio</h2> ' + getPixelRatio());
 		log('<h2>User Agent</h2> <small>' + navigator.userAgent + '</small>');
-		doc.location.hash = ':' + platform.os + ':' + platform.name + ':' + platform.version + ':' + platform.layout + ':' + docW + ' x ' + docH + ':' + w + ' x ' + h + ':' + color + ':' + getFlashVersion().split(',').shift() + ':' + cookiesEnabled() + ':' + localStorageEnabeled() + ':' + adblock + ':' + detectZoom.zoom() + ':' + getBrowserLanguage() + ':' + getPixelRatio() + ':' + navigator.userAgent;
+		doc.location.hash = ':' + platform.os + ':' + platform.name + ':' + platform.version + ':' + platform.layout + ':' + docW + ' x ' + docH + ':' + w + ' x ' + h + ':' + color + ':' + getFlashVersion().split(',').shift() + ':' + cookiesEnabled() + ':' + localStorageEnabeled() + ':' + adblock + ':' + getBrowserLanguage() + ':' + getPixelRatio() + ':' + navigator.userAgent;
 	}
 	var alldetails = document.location.href.replace(/ /g,'').replace('#', '%23');
 	twitter.href = 'https://twitter.com/intent/tweet?text=My browser details:&url=' + alldetails + '&via=justmarkup';
