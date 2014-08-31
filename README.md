@@ -21,6 +21,8 @@ What does it detect?
 * Zoomlevel
 * Pixel Ratio
 
+[![Screenshot of Bugreporter](http://bugspencer.com/bugreporter/screenshot.png "Screenshot of Bugreporter")](http://bugspencer.com/bugreporter/)
+
 License
 ------------
 
