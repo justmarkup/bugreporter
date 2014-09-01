@@ -18,7 +18,6 @@ What does it detect?
 * Cookie (yes or no)
 * LocalStorage (yes or no)
 * Adblock (yes or no)
-* Zoomlevel
 * Pixel Ratio
 
 [![Screenshot of Bugreporter](http://bugspencer.com/bugreporter/screenshot.png "Screenshot of Bugreporter")](http://bugspencer.com/bugreporter/)
