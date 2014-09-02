@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Bug Report</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet"  href="../stylesheet/css/all.css">
+	<style>
+		.popup {
+			position: absolute;
+			top: 20%;
+			left: 50%;
+			width: 20%;
+			height: 30%;
+			margin-left: -10%;
+			background: #fff;
+			z-index: 10;	
+			padding: 20px;
+			display: none;
+		}
+
+		.popup.error {
+			border: 8px solid #EE6456;
+			display: block;
+		}
+
+		.popup.success {
+			border: 8px solid #1CAF9A;
+			display: block;
+		}
+
+		.popup h2 {
+			font-size: 20px;
+			color: #111;
+		}
+
+		.popup p {
+			color: #111;
+		}
+
+		.shadow {
+			position: absolute;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			right: 0;
+			background: #111;
+			background: rgba(0,0,0,0.8);
+			display: none;
+		}
+
+		.shadow.visible {display: block;}
+	</style>
+	<script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script>
+		var mandrillkey = 'YOUR_MANDRILL_KEY';
+		var adblock = 'enabled';
+	</script>
+</head>
+<body>	
+	<div class="wrapper">
+		<div class="header">
+			<h1><span aria-hidden="true" class="icon-bug"></span>Bug Reporter <small>(Browser Details)</small></h1>
+		</div>
+		<div id="url"></div>
+		<div class="main" role="main">
+			<p style="display: none;" id="share" class="button"><span>Share:</span> <a id="email" href="#">Email</a> <a id="twitter" href="#">Twitter</a></p>
+			<ul id="details" class="clearfix"></ul>
+		</div>
+	</div>
+	<div class="footer">
+		<p>Made by <a href="www.twitter.com/justmarkup">@justmarkup</a></p>
+		<p>Special thanks to Benjamin Tan for <a href="https://github.com/bestiejs/platform.js">platform.js</a> and Tom for <a href="https://github.com/tombigel/detect-zoom">detect-zoom</a></p>
+		<p>Icons via <a href="http://icomoon.io/">icomoon.io</a></p>
+		<p>Github: <a href="https://github.com/justmarkup/bugreporter">Bugreporter</a></p>
+	</div>
+	<div id="shadow" class="shadow"></div>
+	<div id="popup" class="popup"></div>
+	<script src="../js/advertisement.js"></script>
+	<script src="../js/platform.js"></script>
+	<script src="../js/lib/detect-zoom.min.js"></script>
+	<script src="../js/bugreporter.js"></script>
+	<script>
+	function getQueryVariable(variable) {
+       var query = window.location.search.substring(1);
+       var vars = query.split("&");
+       for (var i=0;i<vars.length;i++) {
+               var pair = vars[i].split("=");
+               if(pair[0] == variable){return pair[1];}
+       }
+       return(false);
+	}
+	var emailTo = getQueryVariable("email"),
+		emailName = getQueryVariable("name"),
+		popup = document.getElementById('popup'),
+		shadow = document.getElementById('shadow');
+
+	if (emailTo && emailName) {
+		$.ajax({
+			type: "POST",
+			url: "https://mandrillapp.com/api/1.0/messages/send.json",
+			data: {
+				'key': mandrillkey,
+				'message': {
+					'from_email': emailTo,
+					'to': [
+						{
+		 					'email': emailTo,
+							'name': emailName,
+							'type': 'to'
+		          		}
+		        	],
+					'autotext': 'true',
+					'subject': 'My browser details',
+					'html': '<h2>My browser details: </h2>' + document.location.origin + document.location.pathname + document.location.hash.replace(/ /g,'').replace('#', '%23')
+	    		}
+  			}
+ 		}).done(function(response) {
+   			alert("Browser details send to "  + emailTo);
+ 		});
+	} else {
+		shadow.className = 'shadow visible';
+		popup.className = 'popup error';
+		popup.innerHTML = '<h2>Something went wrong!</h2><p>Please specify email and name.</p>';
+	}
+	</script>
+</body>
+</html>
