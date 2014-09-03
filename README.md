@@ -7,7 +7,7 @@ Bugreporter
 What is it for?
 ------------
 
-It's a tool to get browser details from clients, bug reporters... in a simple way. Send the link eg. http://bugspencer.com/bugreporter to someone, who than can email or tweet you back his browser details.
+It's a tool to get browser details from clients, bug reporters... in a simple way. Send the link eg. http://bugspencer.com/bugreporter to someone, who then can email or tweet you back his browser details.
 
 
 [![Screenshot of Bugreporter](http://bugspencer.com/bugreporter/screenshot.png "Screenshot of Bugreporter")](http://bugspencer.com/bugreporter/)
