@@ -4,6 +4,14 @@ Bugreporter
 * Author    : justmarkup hallo@justmarkup.com
 * Demo      : http://bugspencer.com/bugreporter
 
+What is it for?
+------------
+
+It's a tool to get browser details from clients, bug reporters... in a simple way. Send the link eg. http://bugspencer.com/bugreporter to someone, who than can email or tweet you back his browser details.
+
+
+[![Screenshot of Bugreporter](http://bugspencer.com/bugreporter/screenshot.png "Screenshot of Bugreporter")](http://bugspencer.com/bugreporter/)
+
 What does it detect?
 ------------
 
@@ -20,7 +28,7 @@ What does it detect?
 * Adblock (yes or no)
 * Pixel Ratio
 
-[![Screenshot of Bugreporter](http://bugspencer.com/bugreporter/screenshot.png "Screenshot of Bugreporter")](http://bugspencer.com/bugreporter/)
+Anything else you want to get covered? Please create an [issue](https://github.com/justmarkup/bugreporter/issues) and I will look in to it.
 
 License
 ------------
