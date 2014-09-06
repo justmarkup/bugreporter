@@ -27,6 +27,8 @@ What does it detect?
 * LocalStorage (yes or no)
 * Adblock (yes or no)
 * Pixel Ratio
+* CSS Resolution
+* User Agent
 
 Anything else you want to get covered? Please create an [issue](https://github.com/justmarkup/bugreporter/issues) and I will look in to it.
 
