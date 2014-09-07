@@ -76,10 +76,10 @@
 	</div>
 	<div id="shadow" class="shadow"></div>
 	<div id="popup" class="popup"></div>
-	<script src="../js/advertisement.js"></script>
-	<script src="../js/platform.js"></script>
-	<script src="../js/lib/detect-zoom.min.js"></script>
-	<script src="../js/bugreporter.js"></script>
+	<script src="js/advertisement.js"></script>
+	<script src="js/platform.js"></script>
+	<script src="js/res.js"></script>
+	<script src="js/bugreporter.js"></script>
 	<script>
 	function getQueryVariable(variable) {
        var query = window.location.search.substring(1);
@@ -91,11 +91,11 @@
        return(false);
 	}
 	var emailTo = getQueryVariable("email"),
-		emailName = getQueryVariable("name"),
+		emailName = getQueryVariable("name") || "Bugreporter",
 		popup = document.getElementById('popup'),
 		shadow = document.getElementById('shadow');
 
-	if (emailTo && emailName) {
+	if (emailTo) {
 		$.ajax({
 			type: "POST",
 			url: "https://mandrillapp.com/api/1.0/messages/send.json",
@@ -116,12 +116,14 @@
 	    		}
   			}
  		}).done(function(response) {
-   			alert("Browser details send to "  + emailTo);
+   			shadow.className = 'shadow visible';
+			popup.className = 'popup';
+			popup.innerHTML = '<h2>Browser details send!</h2><p>Your browser details got send to ' + emailName + ' ( ' + emailTo + ' ).</p>';
  		});
 	} else {
 		shadow.className = 'shadow visible';
 		popup.className = 'popup error';
-		popup.innerHTML = '<h2>Something went wrong!</h2><p>Please specify email and name.</p>';
+		popup.innerHTML = '<h2>Something went wrong!</h2><p>Please specify email adress.</p>';
 	}
 	</script>
 </body>
