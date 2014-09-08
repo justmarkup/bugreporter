@@ -54,6 +54,10 @@
 	<script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
 	<script>
 		var mandrillkey = 'YOUR_MANDRILL_KEY';
+			emailTo = 'YOUR_EMAIL_ADRESS',
+			emailName = 'YOUR_NAME',
+			clientReference = 'YOUR_CLIENT';	
+
 		var adblock = 'enabled';
 	</script>
 </head>
@@ -90,9 +94,7 @@
        }
        return(false);
 	}
-	var emailTo = getQueryVariable("email"),
-		emailName = getQueryVariable("name") || "Bugreporter",
-		popup = document.getElementById('popup'),
+	var popup = document.getElementById('popup'),
 		shadow = document.getElementById('shadow');
 
 	if (emailTo) {
@@ -111,8 +113,8 @@
 		          		}
 		        	],
 					'autotext': 'true',
-					'subject': 'My browser details',
-					'html': '<h2>My browser details: </h2>' + document.location.origin + document.location.pathname + document.location.hash.replace(/ /g,'').replace('#', '%23')
+					'subject': 'Browser details from ' + clientReference,
+					'html': '<h2>Here are my browser details: </h2>' + document.location.origin + document.location.pathname + document.location.hash.replace(/ /g,'').replace('#', '%23')
 	    		}
   			}
  		}).done(function(response) {
