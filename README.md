@@ -11,9 +11,9 @@ It's a tool to get browser details from clients, bug reporters... in a simple wa
 
 ####There are three possibilities to use it:
 
-1. Send Link to http://bugspencer.com/bugreporter to your bug reporter and ask them to send you back the details via email or twitter
+1. Send link to http://bugspencer.com/bugreporter to your bug reporter and ask them to send you back the details via email or twitter.
 
-2. Clone https://github.com/justmarkup/bugreporter, change styles and wording as you like and upload it to your server (you can also use github pages if you like). Send link to http://[your-server-name]/bugreporter to your bug reporter and ask them to send you back the details via email or twitter
+2. Clone https://github.com/justmarkup/bugreporter, change styles and wording as you like and upload it to your server (you can also use github pages if you like). Send link to http://[your-server-name]/bugreporter to your bug reporter and ask them to send you back the details via email or twitter.
 
 3. Clone https://github.com/justmarkup/bugreporter, change the following variables in email/index.html
 
@@ -24,7 +24,7 @@ var mandrillkey = 'YOUR_MANDRILL_KEY'; // You need a mandrill account https://ma
 	clientReference = 'YOUR_CLIENT';
 ```
 
-Upload everything to sour server. After that you can send a link to http://[your-server-name]/bugreporter/email to your bug reporter and you will immediately a email back with her/his details.
+Upload everything to your server. After that you can send a link to http://[your-server-name]/bugreporter/email to your bug reporter and you will immediately get back an email with the details.
 
 
 [![Screenshot of Bugreporter](https://raw.githubusercontent.com/justmarkup/bugreporter/master/screenshot.png "Screenshot of Bugreporter")](http://bugspencer.com/bugreporter/)
