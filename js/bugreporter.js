@@ -98,6 +98,7 @@
 		log('<h2>Pixel Ratio</h2> ' + hash[13]);
 		log('<h2>CSS Resolution</h2> ' + hash[14] + 'dpi');
 		log('<h2>User Agent</h2> <small>' + hash[15] + '</small>');
+		log('<h2>Description</h2> ' + hash[16]);
 	} else {
 		log('<h2>OS</h2> ' + platform.os + '');
 		log('<h2>Browser</h2> ' + platform.name + ' (' + platform.version + ')');
@@ -117,7 +118,8 @@
 		log('<h2>Pixel Ratio</h2> ' + getPixelRatio());
 		log('<h2>CSS Resolution</h2> ' + res.dpi() + 'dpi, ' + res.dppx() + 'dppx, ' + res.dpcm() + 'dpcm');
 		log('<h2>User Agent</h2> <small>' + navigator.userAgent + '</small>');
-		doc.location.hash = ':' + platform.os + ':' + platform.name + ':' + platform.version + ':' + platform.layout + ':' + docW + ' x ' + docH + ':' + w + ' x ' + h + ':' + color + ':' + getFlashVersion().split(',').shift() + ':' + cookiesEnabled() + ':' + localStorageEnabeled() + ':' + adblock + ':' + getBrowserLanguage() + ':' + getPixelRatio() + ':' + res.dpi() + 'dpi, ' + res.dppx() + 'dppx, ' + res.dpcm() + 'dpcm' + ':' + navigator.userAgent;
+		log('<h2>Description</h2> ' + platform.description);
+		doc.location.hash = ':' + platform.os + ':' + platform.name + ':' + platform.version + ':' + platform.layout + ':' + docW + ' x ' + docH + ':' + w + ' x ' + h + ':' + color + ':' + getFlashVersion().split(',').shift() + ':' + cookiesEnabled() + ':' + localStorageEnabeled() + ':' + adblock + ':' + getBrowserLanguage() + ':' + getPixelRatio() + ':' + res.dpi() + 'dpi, ' + res.dppx() + 'dppx, ' + res.dpcm() + 'dpcm' + ':' + navigator.userAgent+ ':' + platform.description;
 	}
 	var alldetails = document.location.href.replace(/ /g,'').replace('#', '%23');
 	twitter.href = 'https://twitter.com/intent/tweet?text=My browser details:&url=' + alldetails + '&via=justmarkup';
