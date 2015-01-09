@@ -2,7 +2,7 @@ Bugreporter
 ================================
 
 * Author    : justmarkup hallo@justmarkup.com
-* Demo      : http://bugspencer.com/bugreporter
+* Demo      : http://justmarkup.com/bugreporter
 
 What is it for?
 ------------
@@ -11,7 +11,7 @@ It's a tool to get browser details from clients, bug reporters... in a simple wa
 
 ####There are three possibilities to use it:
 
-1. Send link to http://bugspencer.com/bugreporter to your bug reporter and ask them to send you back the details via email or twitter.
+1. Send link to http://justmarkup.com/bugreporter to your bug reporter and ask them to send you back the details via email or twitter.
 
 2. Clone https://github.com/justmarkup/bugreporter, change styles and wording as you like and upload it to your server (you can also use github pages if you like). Send link to http://[your-server-name]/bugreporter to your bug reporter and ask them to send you back the details via email or twitter.
 
@@ -27,7 +27,7 @@ var mandrillkey = 'YOUR_MANDRILL_KEY'; // You need a mandrill account https://ma
 Upload everything to your server. After that you can send a link to http://[your-server-name]/bugreporter/email to your bug reporter and you will immediately get back an email with the details.
 
 
-[![Screenshot of Bugreporter](https://raw.githubusercontent.com/justmarkup/bugreporter/master/screenshot.png "Screenshot of Bugreporter")](http://bugspencer.com/bugreporter/)
+[![Screenshot of Bugreporter](https://raw.githubusercontent.com/justmarkup/bugreporter/master/screenshot.png "Screenshot of Bugreporter")](http://justmarkup.com/bugreporter/)
 
 What does it detect?
 ------------
